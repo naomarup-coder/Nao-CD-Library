@@ -1,0 +1,173 @@
+/* =========================================================
+   118 CD Library - デザイン設定
+   色や余白を変更したいときは、まずこのファイルを編集します。
+   ========================================================= */
+:root {
+  --color-background: #f5f6fa;
+  --color-panel: #ffffff;
+  --color-text: #202538;
+  --color-muted: #687087;
+  --color-border: #e1e5ef;
+  --color-primary: #6257c9;
+  --color-primary-light: #eeeaff;
+  --color-header-start: #29264f;
+  --color-danger: #b42336;
+  --shadow-card: 0 8px 28px rgb(34 36 59 / 5%);
+  --radius-card: 16px;
+  --content-width: 1120px;
+}
+
+/* 基本設定 */
+* { box-sizing: border-box; }
+html { color-scheme: light; }
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid #aaa2ff;
+  outline-offset: 2px;
+}
+
+/* ヘッダー */
+.site-header {
+  padding: 22px max(16px, calc((100% - var(--content-width)) / 2));
+  color: #fff;
+  background: linear-gradient(120deg, var(--color-header-start), var(--color-primary));
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand {
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-align: left;
+}
+.site-subtitle { margin: 7px 0 0; color: #e2defd; font-size: .92rem; }
+
+/* ページ共通 */
+.page-container { width: min(100% - 36px, var(--content-width)); min-height: 60vh; margin: 0 auto; padding: 24px 0 52px; }
+.site-footer { padding: 20px 16px 30px; color: var(--color-muted); font-size: .82rem; text-align: center; }
+.site-footer p { margin: 4px 0; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+.search-input { flex: 1 1 240px; min-width: 0; padding: 12px 14px; border: 1px solid var(--color-border); border-radius: 12px; background: #fff; }
+.button {
+  min-height: 42px;
+  padding: 9px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 11px;
+  color: var(--color-text);
+  background: #fff;
+  font-weight: 650;
+}
+.button:hover { filter: brightness(.98); }
+.button-primary { border-color: var(--color-primary); color: #fff; background: var(--color-primary); }
+.button-soft { border-color: transparent; color: var(--color-primary); background: var(--color-primary-light); }
+.button-danger { color: var(--color-danger); }
+.button-header { border-color: rgb(255 255 255 / 45%); color: #fff; background: rgb(255 255 255 / 12%); }
+.button-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin: 22px 0 12px; }
+.section-heading h1, .section-heading h2 { margin: 0; font-size: 1.22rem; }
+.muted { color: var(--color-muted); font-size: .9rem; }
+.breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-bottom: 16px; color: var(--color-muted); font-size: .9rem; overflow-wrap: anywhere; }
+.breadcrumb button { padding: 0; border: 0; color: var(--color-primary); background: transparent; }
+
+/* カード・一覧 */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.card {
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-panel);
+  box-shadow: var(--shadow-card);
+}
+.book-card { cursor: pointer; transition: transform .15s, border-color .15s; }
+.book-card:hover, .album-card:hover { transform: translateY(-2px); border-color: #b9b2f1; }
+.book-icon { display: grid; width: 48px; height: 48px; margin-bottom: 12px; place-items: center; border-radius: 14px; background: var(--color-primary-light); font-size: 1.5rem; }
+.card-title { margin: 0 0 6px; font-size: 1.02rem; overflow-wrap: anywhere; }
+.album-card { display: flex; align-items: flex-start; gap: 13px; cursor: pointer; transition: transform .15s, border-color .15s; }
+.album-cover { display: grid; width: 72px; height: 72px; flex: 0 0 72px; overflow: hidden; place-items: center; border-radius: 11px; background: linear-gradient(135deg, #e8e5ff, #c8d6ee); font-size: 1.6rem; }
+.album-cover img, .detail-cover img { width: 100%; height: 100%; object-fit: cover; }
+.album-copy { min-width: 0; }
+.album-artist { margin-bottom: 3px; color: var(--color-muted); font-size: .86rem; overflow-wrap: anywhere; }
+.album-title { font-weight: 750; line-height: 1.35; overflow-wrap: anywhere; }
+.album-meta { margin-top: 7px; color: var(--color-muted); font-size: .82rem; }
+.empty-state { padding: 28px; border: 1px dashed #c9cede; border-radius: 14px; color: var(--color-muted); text-align: center; }
+.notice { margin: 14px 0; padding: 12px 14px; border: 1px solid #f0dfab; border-radius: 12px; color: #66521a; background: #fff9e9; font-size: .9rem; }
+
+/* アルバム詳細 */
+.detail-card { margin-bottom: 22px; }
+.detail-header { display: flex; align-items: center; gap: 18px; }
+.detail-cover { display: grid; width: 116px; height: 116px; flex: 0 0 116px; overflow: hidden; place-items: center; border-radius: 18px; background: linear-gradient(135deg, #e8e5ff, #c8d6ee); font-size: 2.4rem; }
+.detail-header h1 { margin: 0 0 5px; font-size: clamp(1.35rem, 3vw, 2rem); overflow-wrap: anywhere; }
+.pill { display: inline-block; margin-top: 4px; padding: 4px 9px; border-radius: 999px; color: #5146b5; background: #f0efff; font-size: .78rem; font-weight: 700; }
+.disc-heading { margin: 18px 0 4px; font-weight: 750; }
+.track-list { margin: 0; padding: 0; list-style: none; }
+.track-list li { display: flex; align-items: baseline; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--color-border); overflow-wrap: anywhere; }
+.track-list li:last-child { border-bottom: 0; }
+.track-number { min-width: 28px; color: var(--color-muted); font-variant-numeric: tabular-nums; }
+.lyric-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.lyric-item { min-width: 0; }
+.lyric-image { width: 100%; height: 200px; border: 1px solid var(--color-border); border-radius: 10px; background: #f1f2f7; object-fit: contain; cursor: zoom-in; }
+.lyric-name { display: block; margin-top: 5px; color: var(--color-muted); font-size: .82rem; overflow-wrap: anywhere; }
+.text-link { color: var(--color-primary); overflow-wrap: anywhere; }
+
+/* 登録・編集フォーム */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-field { display: flex; min-width: 0; flex-direction: column; gap: 6px; }
+.form-field-full { grid-column: 1 / -1; }
+.form-field label { font-size: .9rem; font-weight: 700; }
+.form-field input, .form-field textarea, .form-field select { width: 100%; min-width: 0; padding: 11px; border: 1px solid var(--color-border); border-radius: 10px; background: #fff; }
+.form-field textarea { min-height: 140px; resize: vertical; }
+.help-text { color: var(--color-muted); font-size: .82rem; }
+
+/* ダイアログ */
+.dialog { width: min(760px, calc(100% - 24px)); max-width: 760px; max-height: 90dvh; padding: 0; border: 0; border-radius: 16px; box-shadow: 0 20px 70px rgb(0 0 0 / 25%); }
+.dialog::backdrop { background: rgb(21 21 38 / 66%); }
+.dialog-content { padding: 20px; }
+.dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.dialog-heading h2 { margin: 0; font-size: 1.15rem; }
+.qr-panel { text-align: center; }
+.qr-image { display: block; width: min(260px, 70vw); height: auto; margin: 14px auto; }
+.zoomed-image { display: block; max-width: 100%; max-height: 72dvh; margin: 0 auto; object-fit: contain; }
+
+/* スマートフォン */
+@media (max-width: 640px) {
+  .site-header { padding: 18px 14px; }
+  .brand { font-size: 1.08rem; }
+  .button-header { padding: 8px 10px; font-size: .86rem; }
+  .site-subtitle { max-width: 34rem; font-size: .84rem; }
+  .page-container { width: calc(100% - 24px); padding-top: 16px; }
+  .toolbar { gap: 8px; }
+  .toolbar .button { flex: 1 1 auto; }
+  .card-grid { grid-template-columns: 1fr; gap: 10px; }
+  .section-heading { align-items: flex-start; flex-direction: column; }
+  .detail-header { align-items: flex-start; gap: 12px; }
+  .detail-cover { width: 88px; height: 88px; flex-basis: 88px; border-radius: 13px; }
+  .detail-header h1 { font-size: 1.35rem; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-field-full { grid-column: auto; }
+  .lyric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .lyric-image { height: 170px; }
+  .card { padding: 14px; }
+  .dialog-content { padding: 15px; }
+}
+
+/* QRコード印刷 */
+@media print {
+  body { background: #fff; }
+  .site-header, .site-footer, .no-print { display: none !important; }
+  .page-container { width: 100%; padding: 0; }
+  .dialog { position: static; display: block; width: 100%; max-width: none; max-height: none; box-shadow: none; }
+  .dialog::backdrop { display: none; }
+  .dialog-content { padding: 0; }
+  .qr-image { width: 65mm; height: 65mm; }
+}
